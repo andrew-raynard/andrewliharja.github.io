@@ -327,8 +327,9 @@
     }
 
     /* NAV HOVER */
-    .nav-links a {
+    .nav-links a, .hero-links a, .nav-logo {
       position: relative;
+      transition: transform 0.2s ease-out;
     }
     .nav-links a::after {
       content: '';
@@ -352,6 +353,46 @@
       scroll-behavior: smooth;
     }
 
+    /* PROGRESS BAR */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--text);
+      z-index: 1000;
+      transition: width 0.1s ease;
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--text);
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      z-index: 999;
+      pointer-events: none;
+    }
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--text);
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      z-index: 998;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .cursor-dot, .cursor-outline { display: none; }
+    }
+
     /* HIDDEN class for filter */
     .hidden { display: none !important; }
 
@@ -363,6 +404,10 @@
   </style>
 </head>
 <body>
+
+  <div class="scroll-progress" id="progress-bar"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-outline" id="cursor-outline"></div>
 
   <nav>
     <a class="nav-logo" href="#">Andrew Liharja</a>
@@ -377,10 +422,10 @@
 
     <!-- HERO -->
     <section class="hero">
-      <p class="hero-label">Portfolio — 2025</p>
+      <p class="hero-label">Portfolio — 2026</p>
       <h1>Quant &amp; <em>Software</em><br>Engineer</h1>
       <p class="hero-bio">
-        Mathematics &amp; Quantitative Finance student at NUS. I build models, trading strategies, and data tools at the intersection of rigorous math and real-world finance.
+        Data Science & Analytics student at NUS. I build models, trading strategies, and data tools at the intersection of rigorous math and real-world finance.
       </p>
       <div class="hero-links">
         <a href="https://github.com/" target="_blank">
@@ -455,9 +500,11 @@
       </div>
       <div class="about-grid">
         <div class="about-text">
-          <p>Hi everyone! My name is Andrew Raynard, currently pursuing Mathematics and Quantitative Finance at the National University of Singapore. I am interested in the intersection of rigorous mathematical theory and real-world financial applications — from stochastic modelling and derivatives pricing to algorithmic strategy design and data-driven research.</p>
-          <p>My work spans statistical modelling, quantitative trading research, and building clean, reproducible tools that bridge academia and industry. I enjoy turning complex mathematical ideas into working, testable code.</p>
-          <p>Currently open to quant research internships, developer roles, or any collaboration at the edge of math, finance, and engineering.</p>
+          <p>Hi, I'm Andrew.</p>
+          <p>I'm an undergraduate at the National University of Singapore studying Data Science & Analytics. I'm fascinated by how mathematics, statistics, and computer science come together to solve challenging real-world problems.</p>
+          <p>My interests lie at the intersection of data science, artificial intelligence, and quantitative finance. Whether I'm developing analytical models, building software, or exploring machine learning techniques, I enjoy transforming complex data into meaningful insights and practical solutions.</p>
+          <p>Beyond technical skills, I value curiosity, continuous learning, and thoughtful collaboration. I believe the best technology is not only innovative but also useful, intuitive, and built with people in mind. I'm always looking for opportunities to learn from talented teams, tackle difficult problems, and create products that make a meaningful impact.</p>
+          <p>Thanks for stopping by—feel free to explore my projects or get in touch. I'd love to connect.</p>
         </div>
         <div>
           <ul class="stack-list">
@@ -490,11 +537,45 @@
   </main>
 
   <footer>
-    <span>© 2025 Andrew Liharja</span>
+    <span>© 2026 Andrew Liharja</span>
     <span>andrewliharja.github.io</span>
   </footer>
 
   <script>
+    // SCROLL PROGRESS
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+
+    // CUSTOM CURSOR
+    const dot = document.getElementById('cursor-dot');
+    const outline = document.getElementById('cursor-outline');
+    window.addEventListener('mousemove', (e) => {
+      const { clientX: x, clientY: y } = e;
+      dot.style.transform = `translate(${x}px, ${y}px)`;
+
+      outline.animate({
+        transform: `translate(${x - 20}px, ${y - 20}px)`
+      }, { duration: 500, fill: "forwards", easing: "ease-out" });
+    });
+
+    // MAGNETIC BUTTONS (Subtle)
+    const links = document.querySelectorAll('.hero-links a, .nav-logo, .nav-links a');
+    links.forEach(link => {
+      link.addEventListener('mousemove', (e) => {
+        const rect = link.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        link.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      });
+      link.addEventListener('mouseleave', () => {
+        link.style.transform = `translate(0, 0)`;
+      });
+    });
+
     // REVEAL ANIMATION ON SCROLL
     function reveal() {
       var reveals = document.querySelectorAll(".reveal");
