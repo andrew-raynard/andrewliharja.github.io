@@ -16,341 +16,8 @@
       --text: #1a1a18;
       --muted: #7a7972;
       --border: #e5e3dd;
-      --accent: #1a1a18;
       --tag-bg: #efefeb;
       --tag-text: #4a4a46;
-      --link: #2563eb;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      padding: 0 clamp(1.5rem, 6vw, 6rem);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-    .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-
-    /* LAYOUT */
-    main { max-width: 900px; margin: 0 auto; padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 6vw, 2rem); }
-
-    /* HERO */
-    .hero { margin-bottom: 5rem; animation: fadeIn 1s ease-out; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.5rem, 7vw, 4.5rem);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-    }
-    .hero h1 em { font-style: italic; }
-    .hero-bio {
-      max-width: 520px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .hero-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 18px;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      transition: all 0.2s;
-      background: var(--surface);
-    }
-    .hero-links a:hover { border-color: var(--text); color: var(--text); }
-
-    /* SECTION HEADER */
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.5rem;
-      letter-spacing: -0.01em;
-    }
-    .section-count {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
-
-    /* FILTERS */
-    .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
-    .filter-btn {
-      padding: 5px 14px;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      background: transparent;
-      color: var(--muted);
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--text);
-      border-color: var(--text);
-      color: var(--bg);
-      transform: scale(1.05);
-    }
-
-    /* PROJECT GRID */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-    /* Staggered Reveal */
-    .project-card {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.active .project-card {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal.active .project-card:nth-child(2) {
-      transition-delay: 0.1s;
-    }
-    .project-card {
-      background: var(--surface);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      transition: background 0.15s;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-    }
-    .project-card:hover { background: #fafaf7; }
-    .project-card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-    .project-icon {
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .project-link {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 18px;
-      line-height: 1;
-      transition: color 0.15s;
-    }
-    .project-link:hover { color: var(--text); }
-    .project-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.15rem;
-      line-height: 1.25;
-      letter-spacing: -0.01em;
-    }
-    .project-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.65;
-      flex: 1;
-    }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
-    .tag {
-      padding: 3px 10px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      font-size: 11px;
-      border-radius: 2px;
-      letter-spacing: 0.03em;
-    }
-
-    /* ABOUT */
-    .about-section { margin-top: 5rem; }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 2rem;
-    }
-    .about-text { color: var(--muted); font-size: 14px; line-height: 1.85; }
-    .about-text p + p { margin-top: 1rem; }
-    .stack-list { list-style: none; }
-    .stack-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 13px;
-    }
-    .stack-item:last-child { border-bottom: none; }
-    .stack-name { color: var(--text); }
-    .stack-type { color: var(--muted); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; }
-
-    /* CONTACT */
-    .contact-section {
-      margin-top: 5rem;
-      padding: 2.5rem;
-      background: var(--text);
-      color: var(--bg);
-    }
-    .contact-section .section-title { color: var(--bg); }
-    .contact-section .section-count { color: #888; }
-    .contact-section .section-header { border-bottom-color: #333; }
-    .contact-grid { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
-    .contact-text { color: #aaa; font-size: 14px; line-height: 1.75; }
-    .contact-email {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      color: var(--bg);
-      text-decoration: none;
-      border-bottom: 1px solid #444;
-      padding-bottom: 2px;
-      transition: border-color 0.2s;
-    }
-    .contact-email:hover { border-color: var(--bg); }
-
-    /* FOOTER */
-    footer {
-      max-width: 900px;
-      margin: 3rem auto 0;
-      padding: 1.5rem clamp(1.5rem, 6vw, 2rem);
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-
-    /* ANIMATIONS */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* PROJECT CARD HOVER */
-    .project-card {
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-      background: var(--surface);
-      border-color: var(--text);
-      z-index: 10;
-    }
-    .project-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--text);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-    .project-card:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    /* NAV HOVER */
-    .nav-links a, .hero-links a, .nav-logo {
-      position: relative;
-      transition: transform 0.2s ease-out;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--text);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-    .nav-links a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    /* SMOOTH SCROLL */
-    html {
-      scroll-behavior: smooth;
     }
 
     /* PROGRESS BAR */
@@ -393,12 +60,223 @@
       .cursor-dot, .cursor-outline { display: none; }
     }
 
-    /* HIDDEN class for filter */
+    /* REVEAL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(1.5rem, 6vw, 6rem);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem; letter-spacing: -0.01em;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    main { max-width: 900px; margin: 0 auto; padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 6vw, 2rem); }
+
+    /* ── HERO ── */
+    .hero { margin-bottom: 5rem; }
+    .hero-label {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      line-height: 1.05; letter-spacing: -0.02em;
+      color: var(--text); margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; }
+
+    /* Typewriter */
+    .typewriter-wrap { display: flex; align-items: center; gap: 0; }
+    #typewriter { color: var(--muted); font-family: 'DM Serif Display', serif; font-style: italic; }
+    .cursor {
+      display: inline-block; width: 3px; height: 1em;
+      background: var(--muted); margin-left: 4px; vertical-align: middle;
+      animation: blink 0.9s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .hero-bio {
+      max-width: 560px; color: var(--muted);
+      font-size: 14px; line-height: 1.85; margin-bottom: 2rem;
+    }
+    .hero-bio strong { color: var(--text); font-weight: 500; }
+
+    .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .hero-links a {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px;
+      border: 1px solid var(--border); border-radius: 2px;
+      color: var(--muted); text-decoration: none;
+      font-size: 12px; letter-spacing: 0.04em;
+      transition: all 0.18s; background: var(--surface);
+    }
+    .hero-links a:hover { border-color: var(--text); color: var(--text); background: var(--bg); }
+    .hero-links a.primary {
+      background: var(--text); color: var(--bg); border-color: var(--text);
+    }
+    .hero-links a.primary:hover { background: #333; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex; align-items: baseline; gap: 1rem;
+      margin-bottom: 2rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; letter-spacing: -0.01em; }
+    .section-count { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+
+    /* ── FILTERS ── */
+    .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .filter-btn {
+      padding: 5px 14px; border: 1px solid var(--border); border-radius: 2px;
+      background: transparent; color: var(--muted);
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--text); border-color: var(--text); color: var(--bg);
+    }
+
+    /* ── PROJECT GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+    }
+    .project-card {
+      background: var(--surface); padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: background 0.15s, transform 0.15s;
+      cursor: pointer;
+    }
+    .project-card:hover { background: #fafaf7; }
+    .project-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .project-icon { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+    .project-arrow { color: var(--muted); font-size: 18px; line-height: 1; transition: transform 0.15s, color 0.15s; }
+    .project-card:hover .project-arrow { color: var(--text); transform: translate(2px,-2px); }
+    .project-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; line-height: 1.25; letter-spacing: -0.01em; }
+    .project-desc { font-size: 13px; color: var(--muted); line-height: 1.65; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .tag { padding: 3px 10px; background: var(--tag-bg); color: var(--tag-text); font-size: 11px; border-radius: 2px; letter-spacing: 0.03em; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(26,26,24,0.55); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--surface); max-width: 540px; width: 100%;
+      border: 1px solid var(--border); padding: 2rem;
+      position: relative; animation: modalIn 0.2s ease;
+    }
+    @keyframes modalIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; font-size: 1.2rem; cursor: pointer;
+      color: var(--muted); line-height: 1; transition: color 0.15s;
+    }
+    .modal-close:hover { color: var(--text); }
+    .modal-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .modal-title { font-family: 'DM Serif Display', serif; font-size: 1.6rem; letter-spacing: -0.01em; margin-bottom: 1rem; }
+    .modal-desc { color: var(--muted); font-size: 13px; line-height: 1.8; margin-bottom: 1.25rem; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
+    .modal-actions { display: flex; gap: 0.75rem; }
+    .modal-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px; font-family: 'DM Mono', monospace;
+      font-size: 12px; letter-spacing: 0.04em;
+      border: 1px solid var(--border); border-radius: 2px;
+      text-decoration: none; color: var(--muted);
+      background: var(--bg); cursor: pointer; transition: all 0.15s;
+    }
+    .modal-btn:hover { border-color: var(--text); color: var(--text); }
+    .modal-btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .modal-btn.primary:hover { background: #333; }
+
+    /* ── ABOUT ── */
+    .about-section { margin-top: 5rem; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+    .about-text { color: var(--muted); font-size: 14px; line-height: 1.85; }
+    .about-text p + p { margin-top: 1rem; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .stack-list { list-style: none; }
+    .stack-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .stack-item:last-child { border-bottom: none; }
+    .stack-name { color: var(--text); }
+    .stack-type { color: var(--muted); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      margin-top: 5rem; padding: 2.5rem;
+      background: var(--text); color: var(--bg);
+    }
+    .contact-section .section-title { color: var(--bg); }
+    .contact-section .section-count { color: #777; }
+    .contact-section .section-header { border-bottom-color: #333; }
+    .contact-grid { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+    .contact-text { color: #aaa; font-size: 14px; line-height: 1.75; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; }
+    .contact-link {
+      color: var(--bg); text-decoration: none;
+      border-bottom: 1px solid #444; padding-bottom: 2px;
+      transition: border-color 0.2s; font-size: 13px; letter-spacing: 0.02em;
+    }
+    .contact-link:hover { border-color: var(--bg); }
+    .contact-link.big { font-family: 'DM Serif Display', serif; font-size: clamp(1rem, 3vw, 1.4rem); }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 900px; margin: 3rem auto 0;
+      padding: 1.5rem clamp(1.5rem, 6vw, 2rem);
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 11px; color: var(--muted); letter-spacing: 0.04em;
+    }
+
     .hidden { display: none !important; }
 
     @media (max-width: 600px) {
       .about-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
+      .contact-links { align-items: flex-start; }
       .nav-links { display: none; }
     }
   </style>
@@ -409,6 +287,7 @@
   <div class="cursor-dot" id="cursor-dot"></div>
   <div class="cursor-outline" id="cursor-outline"></div>
 
+  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">Andrew Liharja</a>
     <ul class="nav-links">
@@ -423,11 +302,14 @@
     <!-- HERO -->
     <section class="hero">
       <p class="hero-label">Portfolio — 2026</p>
-      <h1>Quant &amp; <em>Software</em><br>Engineer</h1>
+      <h1>Quant &amp; <em>Data</em><br>
+        <span class="typewriter-wrap"><span id="typewriter"></span><span class="cursor"></span></span>
+      </h1>
       <p class="hero-bio">
         Data Science & Analytics student at NUS. I build models, trading strategies, and data tools at the intersection of rigorous math and real-world finance.
       </p>
       <div class="hero-links">
+        <a href="#projects" class="primary">View Projects ↓</a>
         <a href="https://github.com/" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.82.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
@@ -456,38 +338,51 @@
         <button class="filter-btn" data-filter="ml">ML</button>
       </div>
 
+      <!-- ────────────────────────────────────────────
+           HOW TO ADD A PROJECT:
+           1. Copy one <div class="project-card"> block below
+           2. Change data-tags to: quant | ml | tools
+           3. Fill in your title, description, tags, and GitHub link
+           4. The card is clickable — it opens a popup with more detail
+      ──────────────────────────────────────────── -->
       <div class="projects-grid" id="projects-grid">
 
-        <!-- PROJECT 1 — REPLACE WITH YOUR OWN -->
-        <!-- PROJECT 1 -->
-        <a class="project-card" data-tags="quant" href="https://github.com/" target="_blank">
+        <div class="project-card" data-tags="quant"
+          data-title="Pairs Trading Strategy"
+          data-category="Quant"
+          data-desc="Statistical arbitrage model using cointegration tests (Engle-Granger & Johansen) to identify mean-reverting equity pairs. The strategy was backtested on 10 years of daily US equity data with realistic transaction cost assumptions, achieving a Sharpe ratio of 1.4."
+          data-tags-list="Python,statsmodels,pandas,matplotlib"
+          data-github="https://github.com/"
+          data-demo="">
           <div class="project-card-top">
             <span class="project-icon">Quant</span>
-            <span class="project-link" title="View on GitHub">↗</span>
+            <span class="project-arrow">↗</span>
           </div>
           <h3 class="project-title">Pairs Trading Strategy</h3>
           <p class="project-desc">Statistical arbitrage model using cointegration tests to identify mean-reverting equity pairs, backtested on 10 years of market data.</p>
           <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">statsmodels</span>
-            <span class="tag">pandas</span>
+            <span class="tag">Python</span><span class="tag">statsmodels</span><span class="tag">pandas</span>
           </div>
-        </a>
+        </div>
 
-        <!-- PROJECT 2 -->
-        <a class="project-card" data-tags="ml" href="https://github.com/" target="_blank">
+        <div class="project-card" data-tags="ml"
+          data-title="Options Pricing with Neural Nets"
+          data-category="ML"
+          data-desc="Deep learning model trained to price European options, benchmarked against Black-Scholes. The network learns the implied volatility surface from market data, achieving sub-1% pricing error on out-of-sample contracts."
+          data-tags-list="PyTorch,numpy,Finance,scipy"
+          data-github="https://github.com/"
+          data-demo="">
           <div class="project-card-top">
             <span class="project-icon">ML</span>
-            <span class="project-link" title="View on GitHub">↗</span>
+            <span class="project-arrow">↗</span>
           </div>
           <h3 class="project-title">Options Pricing with Neural Nets</h3>
           <p class="project-desc">Deep learning model trained to price European options, benchmarked against Black-Scholes. Explores volatility surface interpolation.</p>
           <div class="project-tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">numpy</span>
-            <span class="tag">Finance</span>
+            <span class="tag">PyTorch</span><span class="tag">numpy</span><span class="tag">Finance</span>
           </div>
-        </a>
+        </div>
+
 
       </div>
     </section>
@@ -514,6 +409,7 @@
             <li class="stack-item"><span class="stack-name">PyTorch</span><span class="stack-type">ML</span></li>
             <li class="stack-item"><span class="stack-name">SQL</span><span class="stack-type">Storage</span></li>
             <li class="stack-item"><span class="stack-name">Git / GitHub</span><span class="stack-type">Versioning</span></li>
+            <li class="stack-item"><span class="stack-name">R</span><span class="stack-type">Stats</span></li>
           </ul>
         </div>
       </div>
@@ -526,10 +422,10 @@
         <span class="section-count">— get in touch</span>
       </div>
       <div class="contact-grid">
-        <p class="contact-text">Open to collaboration, research discussions, or just chatting about quant finance and engineering. Reach out anytime — I'm always happy to connect.</p>
-        <div style="display:flex;flex-direction:column;gap:0.75rem;align-items:flex-end;">
-          <a class="contact-email" href="mailto:andrew.liharja@gmail.com">andrew.liharja@gmail.com</a>
-          <a class="contact-email" href="https://www.linkedin.com/in/andrew-raynard-liharja-3a8519341" target="_blank" style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.03em;">LinkedIn ↗</a>
+        <p class="contact-text">Open to collaboration or just chatting about tech and finance. Reach out anytime — I'm always happy to connect :)</p>
+        <div class="contact-links">
+          <a class="contact-link big" href="mailto:andrew.liharja@gmail.com">andrew.liharja@gmail.com</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/andrew-raynard-liharja-3a8519341" target="_blank">LinkedIn ↗</a>
         </div>
       </div>
     </section>
@@ -540,6 +436,21 @@
     <span>© 2026 Andrew Liharja</span>
     <span>andrewliharja.github.io</span>
   </footer>
+
+  <!-- PROJECT MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <p class="modal-tag" id="modal-category"></p>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-actions">
+        <a class="modal-btn primary" id="modal-github" href="#" target="_blank">↗ View on GitHub</a>
+        <a class="modal-btn" id="modal-demo" href="#" target="_blank" style="display:none">▶ Live Demo</a>
+      </div>
+    </div>
+  </div>
 
   <script>
     // SCROLL PROGRESS
@@ -563,8 +474,8 @@
     });
 
     // MAGNETIC BUTTONS (Subtle)
-    const links = document.querySelectorAll('.hero-links a, .nav-logo, .nav-links a');
-    links.forEach(link => {
+    const interactiveLinks = document.querySelectorAll('.hero-links a, .nav-logo, .nav-links a');
+    interactiveLinks.forEach(link => {
       link.addEventListener('mousemove', (e) => {
         const rect = link.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
@@ -589,9 +500,23 @@
       }
     }
     window.addEventListener("scroll", reveal);
-    // Trigger once on load
     reveal();
 
+    /* ── TYPEWRITER ── */
+    const words = ['Scientist.', 'Researcher.', 'Developer.'];
+    let wi = 0, ci = 0, deleting = false;
+    const el = document.getElementById('typewriter');
+    function type() {
+      const word = words[wi];
+      el.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
+      let delay = deleting ? 60 : 90;
+      if (!deleting && ci === word.length + 1) { deleting = true; delay = 1400; }
+      if (deleting && ci < 0) { deleting = false; wi = (wi + 1) % words.length; ci = 0; delay = 300; }
+      setTimeout(type, delay);
+    }
+    type();
+
+    /* ── FILTER BUTTONS ── */
     const btns = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.project-card');
     const countEl = document.getElementById('proj-count');
@@ -603,13 +528,52 @@
         const f = btn.dataset.filter;
         let visible = 0;
         cards.forEach(card => {
-          const match = f === 'all' || card.dataset.tags.includes(f);
+          const match = f === 'all' || card.dataset.tags === f;
           card.classList.toggle('hidden', !match);
           if (match) visible++;
         });
         countEl.textContent = `— ${visible} project${visible !== 1 ? 's' : ''}`;
       });
     });
+
+    /* ── PROJECT MODAL ── */
+    const overlay = document.getElementById('modal-overlay');
+    const modalClose = document.getElementById('modal-close');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        document.getElementById('modal-category').textContent = card.dataset.category;
+        document.getElementById('modal-title').textContent = card.dataset.title;
+        document.getElementById('modal-desc').textContent = card.dataset.desc;
+
+        const tagsEl = document.getElementById('modal-tags');
+        tagsEl.innerHTML = '';
+        card.dataset.tagsList.split(',').forEach(t => {
+          const s = document.createElement('span');
+          s.className = 'tag'; s.textContent = t.trim();
+          tagsEl.appendChild(s);
+        });
+
+        const gh = document.getElementById('modal-github');
+        gh.href = card.dataset.github || '#';
+
+        const demo = document.getElementById('modal-demo');
+        if (card.dataset.demo) { demo.href = card.dataset.demo; demo.style.display = 'inline-flex'; }
+        else { demo.style.display = 'none'; }
+
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   </script>
 
 </body>
