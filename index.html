@@ -195,6 +195,29 @@
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
     .tag { padding: 3px 10px; background: var(--tag-bg); color: var(--tag-text); font-size: 11px; border-radius: 2px; letter-spacing: 0.03em; }
 
+    /* BADGE */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .badge-wip {
+      background: #fff4e5;
+      color: #663c00;
+      border: 1px solid #ffe1ba;
+    }
+    .badge-pdf {
+      background: #f0f4ff;
+      color: #1a3a8a;
+      border: 1px solid #dbeafe;
+    }
+
     /* ── MODAL ── */
     .modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 500;
@@ -306,7 +329,7 @@
         <span class="typewriter-wrap"><span id="typewriter"></span><span class="cursor"></span></span>
       </h1>
       <p class="hero-bio">
-        Data Science & Analytics student at NUS. I build models, trading strategies, and data tools at the intersection of rigorous math and real-world finance.
+        Data Science and Applied AI student at NUS. I build models, trading strategies, and data tools at the intersection of rigorous math and real-world finance.
       </p>
       <div class="hero-links">
         <a href="#projects" class="primary">View Projects ↓</a>
@@ -335,7 +358,7 @@
       <div class="filters">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="quant">Quant</button>
-        <button class="filter-btn" data-filter="ml">ML</button>
+        <button class="filter-btn" data-filter="ai-ml">AI/ML</button>
       </div>
 
       <!-- ────────────────────────────────────────────
@@ -347,42 +370,41 @@
       ──────────────────────────────────────────── -->
       <div class="projects-grid" id="projects-grid">
 
-        <div class="project-card" data-tags="quant"
-          data-title="Pairs Trading Strategy"
-          data-category="Quant"
-          data-desc="Statistical arbitrage model using cointegration tests (Engle-Granger & Johansen) to identify mean-reverting equity pairs. The strategy was backtested on 10 years of daily US equity data with realistic transaction cost assumptions, achieving a Sharpe ratio of 1.4."
-          data-tags-list="Python,statsmodels,pandas,matplotlib"
-          data-github="https://github.com/"
-          data-demo="">
+        <div class="project-card" data-tags="all"
+          data-title="IMMC 2025 Global Sports League"
+          data-category="Report"
+          data-desc="Award-winning mathematical modeling report for the International Mathematical Modeling Challenge 2025. This project involved developing a multi-objective optimization framework to streamline global sports league scheduling and resource allocation."
+          data-tags-list="Mathematical Modeling,Data Analysis,Optimization,Python"
+          data-github="IMMC-2025-Global-Sports-League.pdf"
+          data-demo="IMMC-2025-Global-Sports-League.pdf">
           <div class="project-card-top">
-            <span class="project-icon">Quant</span>
+            <span class="project-icon">Report</span>
             <span class="project-arrow">↗</span>
           </div>
-          <h3 class="project-title">Pairs Trading Strategy</h3>
-          <p class="project-desc">Statistical arbitrage model using cointegration tests to identify mean-reverting equity pairs, backtested on 10 years of market data.</p>
+          <h3 class="project-title">IMMC 2025 Global Sports League <span class="badge badge-pdf">PDF</span></h3>
+          <p class="project-desc">Optimizing league scheduling and resource allocation through advanced mathematical modeling and data analysis.</p>
           <div class="project-tags">
-            <span class="tag">Python</span><span class="tag">statsmodels</span><span class="tag">pandas</span>
+            <span class="tag">Modeling</span><span class="tag">Analysis</span><span class="tag">Optimization</span>
           </div>
         </div>
 
-        <div class="project-card" data-tags="ml"
-          data-title="Options Pricing with Neural Nets"
-          data-category="ML"
-          data-desc="Deep learning model trained to price European options, benchmarked against Black-Scholes. The network learns the implied volatility surface from market data, achieving sub-1% pricing error on out-of-sample contracts."
-          data-tags-list="PyTorch,numpy,Finance,scipy"
+        <div class="project-card" data-tags="quant ai-ml"
+          data-title="Stock Price Prediction with Linear Regression"
+          data-category="Quant & AI/ML"
+          data-desc="An end-to-end ML pipeline to forecast equity price movements. Features include automated data ingestion via yfinance, technical indicator engineering (RSIs, MAs), and a scikit-learn based regression model validated on out-of-sample data."
+          data-tags-list="Python,yfinance,pandas,scikit-learn,Matplotlib"
           data-github="https://github.com/"
           data-demo="">
           <div class="project-card-top">
-            <span class="project-icon">ML</span>
+            <span class="project-icon">Quant & AI/ML</span>
             <span class="project-arrow">↗</span>
           </div>
-          <h3 class="project-title">Options Pricing with Neural Nets</h3>
-          <p class="project-desc">Deep learning model trained to price European options, benchmarked against Black-Scholes. Explores volatility surface interpolation.</p>
+          <h3 class="project-title">Stock Price Prediction <span class="badge badge-wip">WIP</span></h3>
+          <p class="project-desc">Forecasting next-day stock movements through technical feature engineering and linear regression modeling.</p>
           <div class="project-tags">
-            <span class="tag">PyTorch</span><span class="tag">numpy</span><span class="tag">Finance</span>
+            <span class="tag">ML</span><span class="tag">Quant</span><span class="tag">Finance</span>
           </div>
         </div>
-
 
       </div>
     </section>
@@ -396,7 +418,7 @@
       <div class="about-grid">
         <div class="about-text">
           <p>Hi, I'm Andrew.</p>
-          <p>I'm an undergraduate at the National University of Singapore studying Data Science & Analytics. I'm fascinated by how mathematics, statistics, and computer science come together to solve challenging real-world problems.</p>
+          <p>I'm an undergraduate at the National University of Singapore studying Data Science and Applied AI. I'm fascinated by how mathematics, statistics, and computer science come together to solve challenging real-world problems.</p>
           <p>My interests lie at the intersection of data science, artificial intelligence, and quantitative finance. Whether I'm developing analytical models, building software, or exploring machine learning techniques, I enjoy transforming complex data into meaningful insights and practical solutions.</p>
           <p>Beyond technical skills, I value curiosity, continuous learning, and thoughtful collaboration. I believe the best technology is not only innovative but also useful, intuitive, and built with people in mind. I'm always looking for opportunities to learn from talented teams, tackle difficult problems, and create products that make a meaningful impact.</p>
           <p>Thanks for stopping by—feel free to explore my projects or get in touch. I'd love to connect.</p>
@@ -447,7 +469,7 @@
       <div class="modal-tags" id="modal-tags"></div>
       <div class="modal-actions">
         <a class="modal-btn primary" id="modal-github" href="#" target="_blank">↗ View on GitHub</a>
-        <a class="modal-btn" id="modal-demo" href="#" target="_blank" style="display:none">▶ Live Demo</a>
+        <a class="modal-btn" id="modal-demo" href="#" target="_blank" style="display:none">▶ View Full Report</a>
       </div>
     </div>
   </div>
@@ -503,7 +525,7 @@
     reveal();
 
     /* ── TYPEWRITER ── */
-    const words = ['Scientist.', 'Researcher.', 'Developer.'];
+    const words = ['Artificial Intelligence', 'Data Science', 'Quantitative Finance'];
     let wi = 0, ci = 0, deleting = false;
     const el = document.getElementById('typewriter');
     function type() {
@@ -528,7 +550,7 @@
         const f = btn.dataset.filter;
         let visible = 0;
         cards.forEach(card => {
-          const match = f === 'all' || card.dataset.tags === f;
+          const match = f === 'all' || card.dataset.tags.split(' ').includes(f);
           card.classList.toggle('hidden', !match);
           if (match) visible++;
         });
@@ -542,7 +564,9 @@
 
     cards.forEach(card => {
       card.addEventListener('click', () => {
-        document.getElementById('modal-category').textContent = card.dataset.category;
+        let category = card.dataset.category;
+        if (category === 'ML') category = 'AI/ML';
+        document.getElementById('modal-category').textContent = category;
         document.getElementById('modal-title').textContent = card.dataset.title;
         document.getElementById('modal-desc').textContent = card.dataset.desc;
 
@@ -558,8 +582,18 @@
         gh.href = card.dataset.github || '#';
 
         const demo = document.getElementById('modal-demo');
-        if (card.dataset.demo) { demo.href = card.dataset.demo; demo.style.display = 'inline-flex'; }
-        else { demo.style.display = 'none'; }
+        if (card.dataset.demo) {
+          demo.href = card.dataset.demo;
+          demo.style.display = 'inline-flex';
+          // Update button text for PDF projects
+          if (card.dataset.demo.endsWith('.pdf')) {
+            demo.textContent = '▶ View Full Report';
+          } else {
+            demo.textContent = '▶ Live Demo';
+          }
+        } else {
+          demo.style.display = 'none';
+        }
 
         overlay.classList.add('open');
         document.body.style.overflow = 'hidden';
