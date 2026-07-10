@@ -129,13 +129,22 @@
     }
 
     /* Typewriter */
-    .typewriter-wrap { display: flex; align-items: center; min-height: 1.4em; }
+    .typewriter-wrap {
+      display: flex;
+      align-items: center;
+      min-height: 1.4em;
+      min-width: 420px; /* Reserved space for 'Quantitative Finance' */
+    }
+    @media (max-width: 600px) {
+      .typewriter-wrap { min-width: auto; }
+    }
     #typewriter {
       color: var(--text);
       font-family: 'DM Serif Display', serif;
       font-style: italic;
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       letter-spacing: -0.01em;
+      white-space: nowrap;
     }
     .cursor {
       display: inline-block; width: 3px; height: 1em;
@@ -146,7 +155,7 @@
 
     .hero-bio {
       max-width: 560px; color: var(--muted);
-      font-size: 14px; line-height: 1.85; margin-bottom: 2rem;
+      font-size: 14px; line-height: 1.8; margin-bottom: 2rem;
     }
     .hero-bio strong { color: var(--text); font-weight: 500; }
 
@@ -202,8 +211,8 @@
     }
     .project-card:hover {
       background: var(--surface);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.06);
       border-color: var(--border);
     }
     .project-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -282,9 +291,9 @@
     .modal-btn.primary:hover { background: #333; }
 
     /* ── ABOUT ── */
-    .about-section { margin-top: 5rem; }
+    .about-section { margin-top: 8rem; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
-    .about-text { color: var(--muted); font-size: 14px; line-height: 1.85; }
+    .about-text { color: var(--muted); font-size: 14px; line-height: 1.8; }
     .about-text p + p { margin-top: 1rem; }
     .about-text strong { color: var(--text); font-weight: 500; }
     .stack-list { list-style: none; }
@@ -295,7 +304,7 @@
 
     /* ── CONTACT ── */
     .contact-section {
-      margin-top: 5rem; padding: 2.5rem;
+      margin-top: 8rem; padding: 2.5rem;
       background: var(--text); color: var(--bg);
     }
     .contact-section .section-title { color: var(--bg); }
@@ -355,14 +364,14 @@
       <h1>Andrew Raynard Liharja</h1>
 
       <div class="hero-interest-area">
-        <p class="hero-interest-label">Exploring the frontiers of</p>
+        <p class="hero-interest-label">Interested in</p>
         <div class="typewriter-wrap">
           <span id="typewriter"></span><span class="cursor"></span>
         </div>
       </div>
 
       <p class="hero-bio" style="margin-top: 2.5rem;">
-        Data Science and Applied AI student at NUS. I build models, trading strategies, and data tools at the intersection of rigorous math and real-world finance.
+        Data Science and Applied AI undergraduate at NUS. I build mathematical models, AI applications, and data-driven solutions at the intersection of mathematics, machine learning, and quantitative finance.
       </p>
       <div class="hero-links">
         <a href="#projects" class="primary">View Projects ↓</a>
@@ -450,11 +459,8 @@
       </div>
       <div class="about-grid">
         <div class="about-text">
-          <p>Hi, I'm Andrew.</p>
-          <p>I'm an undergraduate at the National University of Singapore studying Data Science and Applied AI. I'm fascinated by how mathematics, statistics, and computer science come together to solve challenging real-world problems.</p>
-          <p>My interests lie at the intersection of data science, artificial intelligence, and quantitative finance. Whether I'm developing analytical models, building software, or exploring machine learning techniques, I enjoy transforming complex data into meaningful insights and practical solutions.</p>
-          <p>Beyond technical skills, I value curiosity, continuous learning, and thoughtful collaboration. I believe the best technology is not only innovative but also useful, intuitive, and built with people in mind. I'm always looking for opportunities to learn from talented teams, tackle difficult problems, and create products that make a meaningful impact.</p>
-          <p>Thanks for stopping by—feel free to explore my projects or get in touch. I'd love to connect.</p>
+          <p>Hi, I'm Andrew, an undergraduate at the National University of Singapore studying Data Science and Applied AI. I'm passionate about applying mathematics, statistics, and computer science to solve complex real-world problems through data-driven and quantitative approaches.</p>
+          <p>My interests span artificial intelligence, data science, and quantitative finance. I enjoy building mathematical models, machine learning applications, and analytical tools that combine rigorous theory with practical impact. I'm always looking for opportunities to learn, collaborate with talented teams, and tackle challenging technical problems.</p>
         </div>
         <div>
           <ul class="stack-list">
