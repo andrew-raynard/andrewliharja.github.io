@@ -108,22 +108,35 @@
     main { max-width: 900px; margin: 0 auto; padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 6vw, 2rem); }
 
     /* ── HERO ── */
-    .hero { margin-bottom: 5rem; }
+    .hero { margin-bottom: 6rem; padding-top: 2rem; }
     .hero-label {
-      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 1.25rem;
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1.5rem;
+      opacity: 0.8;
     }
     .hero h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.4rem, 7vw, 4.2rem);
-      line-height: 1.05; letter-spacing: -0.02em;
-      color: var(--text); margin-bottom: 1.5rem;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 1; letter-spacing: -0.03em;
+      color: var(--text); margin-bottom: 1rem;
     }
-    .hero h1 em { font-style: italic; }
+
+    .hero-interest-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.02em;
+    }
 
     /* Typewriter */
-    .typewriter-wrap { display: flex; align-items: center; gap: 0; }
-    #typewriter { color: var(--muted); font-family: 'DM Serif Display', serif; font-style: italic; }
+    .typewriter-wrap { display: flex; align-items: center; min-height: 1.4em; }
+    #typewriter {
+      color: var(--text);
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      letter-spacing: -0.01em;
+    }
     .cursor {
       display: inline-block; width: 3px; height: 1em;
       background: var(--muted); margin-left: 4px; vertical-align: middle;
@@ -180,17 +193,31 @@
       gap: 1px; background: var(--border); border: 1px solid var(--border);
     }
     .project-card {
-      background: var(--surface); padding: 1.5rem;
-      display: flex; flex-direction: column; gap: 0.75rem;
-      transition: background 0.15s, transform 0.15s;
+      background: var(--surface); padding: 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       cursor: pointer;
+      position: relative;
+      border: 1px solid transparent;
     }
-    .project-card:hover { background: #fafaf7; }
+    .project-card:hover {
+      background: var(--surface);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+      border-color: var(--border);
+    }
     .project-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
     .project-icon { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-    .project-arrow { color: var(--muted); font-size: 18px; line-height: 1; transition: transform 0.15s, color 0.15s; }
-    .project-card:hover .project-arrow { color: var(--text); transform: translate(2px,-2px); }
-    .project-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; line-height: 1.25; letter-spacing: -0.01em; }
+    .project-arrow { color: var(--muted); font-size: 18px; line-height: 1; transition: all 0.3s ease; }
+    .project-card:hover .project-arrow { color: var(--text); transform: translate(3px,-3px); }
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
+    }
+    .project-card:hover .project-title { color: #000; }
     .project-desc { font-size: 13px; color: var(--muted); line-height: 1.65; flex: 1; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
     .tag { padding: 3px 10px; background: var(--tag-bg); color: var(--tag-text); font-size: 11px; border-radius: 2px; letter-spacing: 0.03em; }
@@ -325,10 +352,16 @@
     <!-- HERO -->
     <section class="hero">
       <p class="hero-label">Portfolio — 2026</p>
-      <h1>Quant &amp; <em>Data</em><br>
-        <span class="typewriter-wrap"><span id="typewriter"></span><span class="cursor"></span></span>
-      </h1>
-      <p class="hero-bio">
+      <h1>Andrew Raynard Liharja</h1>
+
+      <div class="hero-interest-area">
+        <p class="hero-interest-label">Exploring the frontiers of</p>
+        <div class="typewriter-wrap">
+          <span id="typewriter"></span><span class="cursor"></span>
+        </div>
+      </div>
+
+      <p class="hero-bio" style="margin-top: 2.5rem;">
         Data Science and Applied AI student at NUS. I build models, trading strategies, and data tools at the intersection of rigorous math and real-world finance.
       </p>
       <div class="hero-links">
@@ -373,9 +406,9 @@
         <div class="project-card" data-tags="all"
           data-title="IMMC 2025 Global Sports League"
           data-category="Report"
-          data-desc="Award-winning mathematical modeling report for the International Mathematical Modeling Challenge 2025. This project involved developing a multi-objective optimization framework to streamline global sports league scheduling and resource allocation."
-          data-tags-list="Mathematical Modeling,Data Analysis,Optimization,Python"
-          data-github="IMMC-2025-Global-Sports-League.pdf"
+          data-desc="Completed as part of the International Mathematical Modelling Challenge (IMMC) 2025, this project developed a mathematical model for designing a fair, competitive, and sustainable Global Sports League through optimization and quantitative analysis. Working in a four-member team, we were awarded a Distinction for our solution, culminating in a 46-page research report that presented the model, validation, and recommendations for a real-world scheduling problem."
+          data-tags-list="Mathematical Modelling,Optimization,Data Analysis,Problem Solving,Research Writing"
+          data-github=""
           data-demo="IMMC-2025-Global-Sports-League.pdf">
           <div class="project-card-top">
             <span class="project-icon">Report</span>
@@ -579,7 +612,12 @@
         });
 
         const gh = document.getElementById('modal-github');
-        gh.href = card.dataset.github || '#';
+        if (card.dataset.github) {
+          gh.href = card.dataset.github;
+          gh.style.display = 'inline-flex';
+        } else {
+          gh.style.display = 'none';
+        }
 
         const demo = document.getElementById('modal-demo');
         if (card.dataset.demo) {
